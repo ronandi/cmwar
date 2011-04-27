@@ -13,7 +13,7 @@ public interface Component {
 	* Connects this component to another
 	* @param c Component to connect to.
 	*/
-	public void connectTo(Component c);
+	public void connectTo(ConnectionPoint a, ConnectionPoint b);
 
 	/*
 	* Rotates this component
@@ -43,6 +43,9 @@ public interface Component {
 	* Returns location of Component
 	* @return Point object with location coordinates
 	*/
+
+	public List<ConnectionPoint> getConnectionPoints();
+	public void addConnectionPoint(ConnectionPoint newPoint);
 	public Point getPosition();
 	
 	/**

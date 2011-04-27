@@ -62,4 +62,14 @@ public interface Board {
 	* Loads the board in the state it was saved in.
 	*/
 	public void load();
+	
+	/**
+	* Undos the last change to the Board
+	*/
+	public void undoLast();
+
+	/**
+	* Undos the last change to the Board
+	*/
+	public void redoLast();
 }
