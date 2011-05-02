@@ -1,0 +1,111 @@
+<HTML>
+<BODY BGCOLOR="white">
+<PRE>
+<FONT color="green">001</FONT>    package edu.mccc.cos210.cmwar;<a name="line.1"></a>
+<FONT color="green">002</FONT>    import java.util.List;<a name="line.2"></a>
+<FONT color="green">003</FONT>    import java.util.ArrayList;<a name="line.3"></a>
+<FONT color="green">004</FONT>    <a name="line.4"></a>
+<FONT color="green">005</FONT>    /**<a name="line.5"></a>
+<FONT color="green">006</FONT>    * CMConnection for Circuit Maker with AutoRouter<a name="line.6"></a>
+<FONT color="green">007</FONT>    * A Connection is what can connect two Connectables / Components<a name="line.7"></a>
+<FONT color="green">008</FONT>    * @author Rohit Kumar<a name="line.8"></a>
+<FONT color="green">009</FONT>    * @version 0.1<a name="line.9"></a>
+<FONT color="green">010</FONT>    */<a name="line.10"></a>
+<FONT color="green">011</FONT>    public class CMConnection implements Connection {<a name="line.11"></a>
+<FONT color="green">012</FONT>            /**<a name="line.12"></a>
+<FONT color="green">013</FONT>            *Array of size 2 holding connection points<a name="line.13"></a>
+<FONT color="green">014</FONT>            */<a name="line.14"></a>
+<FONT color="green">015</FONT>            private ConnectionPoint[] ends;<a name="line.15"></a>
+<FONT color="green">016</FONT>            public CMConnection() {<a name="line.16"></a>
+<FONT color="green">017</FONT>                    ends = new ConnectionPoint[2];<a name="line.17"></a>
+<FONT color="green">018</FONT>            }<a name="line.18"></a>
+<FONT color="green">019</FONT>    <a name="line.19"></a>
+<FONT color="green">020</FONT>            /**<a name="line.20"></a>
+<FONT color="green">021</FONT>            * Method to get the components connected by this connection<a name="line.21"></a>
+<FONT color="green">022</FONT>            * @return An array of size 2 with the ConnectionPoints<a name="line.22"></a>
+<FONT color="green">023</FONT>            * @test.status ok<a name="line.23"></a>
+<FONT color="green">024</FONT>            */<a name="line.24"></a>
+<FONT color="green">025</FONT>            public ConnectionPoint[] getEnds() {<a name="line.25"></a>
+<FONT color="green">026</FONT>                    return ends;<a name="line.26"></a>
+<FONT color="green">027</FONT>            }<a name="line.27"></a>
+<FONT color="green">028</FONT>    <a name="line.28"></a>
+<FONT color="green">029</FONT>            /**<a name="line.29"></a>
+<FONT color="green">030</FONT>            * Method to set the ends of a connection.<a name="line.30"></a>
+<FONT color="green">031</FONT>            * @param a A Component to be connected.<a name="line.31"></a>
+<FONT color="green">032</FONT>            * @param b Opposite Component to be connected to A, and vice versa.<a name="line.32"></a>
+<FONT color="green">033</FONT>            * @test.status ok<a name="line.33"></a>
+<FONT color="green">034</FONT>            */<a name="line.34"></a>
+<FONT color="green">035</FONT>            public void setEnds(ConnectionPoint a, ConnectionPoint b) {<a name="line.35"></a>
+<FONT color="green">036</FONT>                    ends[0] = a;<a name="line.36"></a>
+<FONT color="green">037</FONT>                    ends[1] = b;<a name="line.37"></a>
+<FONT color="green">038</FONT>            }<a name="line.38"></a>
+<FONT color="green">039</FONT>            public static void main(String[] sa) throws Exception {<a name="line.39"></a>
+<FONT color="green">040</FONT>                    ConnectionPoint cp1 = new CMConnectionPoint(1, 1, 5, 5);<a name="line.40"></a>
+<FONT color="green">041</FONT>                    ConnectionPoint cp2 = new CMConnectionPoint(3, 3, 5, 5);<a name="line.41"></a>
+<FONT color="green">042</FONT>                    CMConnection myConnection = new CMConnection();<a name="line.42"></a>
+<FONT color="green">043</FONT>                    myConnection.setEnds(cp1, cp2);<a name="line.43"></a>
+<FONT color="green">044</FONT>            }<a name="line.44"></a>
+<FONT color="green">045</FONT>    }<a name="line.45"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+</BODY>
+</HTML>
