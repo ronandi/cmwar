@@ -12,7 +12,6 @@ public interface Connection {
 	* @return An array of size 2 with the Components
 	*/
 	public ConnectionPoint[] getEnds();
-
 	/**
 	* Method to set the ends of a connection.
 	* @param a A Component to be connected.

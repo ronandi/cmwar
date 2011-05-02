@@ -36,7 +36,7 @@ public interface Board {
 	* @param a A Component to be connected.
 	* @param b Opposite Component to be connected to A, and vice versa.
 	*/
-	public void addConnection(Component a, Component b);
+	public void addConnection(Component a, ConnectionPoint cpA, Component b, ConnectionPoint cpB);
 
 	/** 
 	* The long-dreaded method that does all the big work. Transforms the rat's nest into traces.

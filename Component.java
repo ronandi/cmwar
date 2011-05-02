@@ -11,14 +11,16 @@ import java.util.List;
 public interface Component {
 	/**
 	* Connects this component to another
-	* @param c Component to connect to.
+	* @param a Component connection point to connect to.
+	* @param b Component connection point to connect to.
 	*/
 	public void connectTo(ConnectionPoint a, ConnectionPoint b);
 
-	/*
+	/**
 	* Rotates this component
+	* @param newOrient New orientation for Component.
 	*/
-	public void rotate();
+	public void rotate(Orientation newOrient);
 
 	/**
 	* Returns the orientation of the component (changed with rotate())
@@ -34,18 +36,34 @@ public interface Component {
 	public String getName();
 
 	/**
+	* Sets name of component.
+	* @param n New new for component.
+	* @test.status ok
+	*/
+	public void setName(String n);
+
+	/**
 	* Returns a list of Connections this component has
 	* @return List of connections component has
 	*/
 	public List<Connection> getConnections();
 
 	/**
+	*Gets connection points for a component.
+	*@return list of ConnectionPoints 
+	*/
+	public List<ConnectionPoint> getConnectionPoints();
+
+	/**
+	*Adds a connection point to a component
+	*@param newPoint ConnectionPoint to add to Component.
+	*/
+	public void addConnectionPoint(ConnectionPoint newPoint);
+	
+	/**
 	* Returns location of Component
 	* @return Point object with location coordinates
 	*/
-
-	public List<ConnectionPoint> getConnectionPoints();
-	public void addConnectionPoint(ConnectionPoint newPoint);
 	public Point getPosition();
 	
 	/**
