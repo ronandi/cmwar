@@ -1,7 +1,14 @@
 package edu.mccc.cos210.cmwar;
-import java.awt.Point;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+import java.awt.image.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.awt.image.BufferedImage;
+import javax.swing.*;
+import java.io.*;
+import javax.imageio.*;
 
 /**
 * Component interface for Circuit Maker with AutoRouter.
@@ -30,13 +37,26 @@ public class CMComponent implements Component {
 	*Location of the component
 	*/
 	private Point location;
+
+	private JPanel view;
+	
 	public CMComponent() {
 		connPointList = new ArrayList<ConnectionPoint>();
 		myConns = new ArrayList<Connection>();
 		orient = Orientation.Up;
 		name = "";
 		location = new Point (0, 0);
+		view = new CMComponentView(this);
 	}
+	public CMComponent(String name) {
+		connPointList = new ArrayList<ConnectionPoint>();
+		myConns = new ArrayList<Connection>();
+		orient = Orientation.Up;
+		this.name = name;
+		location = new Point (0, 0);
+		view = new CMComponentView(this);
+	}
+
 
 	/**
 	* Connects this component to another
@@ -148,4 +168,36 @@ public class CMComponent implements Component {
 		System.out.println(myComp.getConnections());
 		System.out.println(myComp.getOrientation());
 	}
+
+	public JPanel getComponentView() {
+		return view;
+	}
+
+	private class CMComponentView extends JPanel {
+		private CMComponent myComponent;
+		private BufferedImage image;
+		public CMComponentView(CMComponent myComponent) {
+			setLayout(null);
+			//setOpaque(false);
+			setBackground(Color.black);
+			this.myComponent = myComponent;
+			try {
+				image = ImageIO.read(new FileInputStream("images/DIP-8-300.gif"));
+			} catch (Exception e) {
+				System.out.println("image not found");
+			}
+		}
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			Graphics2D g2d = (Graphics2D) g.create();
+			//g2d.drawRenderedImage(image, new AffineTransform());
+			g2d.dispose();
+		}
+		public Dimension getPreferredSize() {
+			System.out.println(image.getWidth());
+			System.out.println(image.getHeight());
+			return new Dimension(image.getWidth(), image.getHeight());
+		}
+	}
+	
 }

@@ -1,6 +1,15 @@
 package edu.mccc.cos210.cmwar;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.*;
+import java.awt.Toolkit;
+import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+
 
 /** 
 * CMBoard for Circuit Maker with AutoRoute
@@ -14,11 +23,12 @@ import java.util.ArrayList;
 *@to.do implement save() method
 *@to.do implement undo / redo
 */
-public class CMBoard implements Board {
+public class CMBoard extends Observable implements Board {
 	/**
 	*Holds components on the board
 	*/
 	private ArrayList<Component> components;
+	private JPanel view = new CMBoardView(this);
 	public CMBoard() {
 		components = new ArrayList<Component>();
 	}	
@@ -30,6 +40,8 @@ public class CMBoard implements Board {
 	*/
 	public void addComponent(Component c) {
 		components.add(c);
+		setChanged();
+		notifyObservers(c);
 	}
 
 	/**
@@ -159,5 +171,71 @@ public class CMBoard implements Board {
 		myBoard.clearConnections();
 		System.out.println(myBoard.listConnections());
 
+	}
+	public JPanel getBoardView() {
+		return view;
+	}
+	private class CMBoardView extends JPanel implements Observer {
+		private CMBoard board;
+		public CMBoardView(CMBoard board) {
+			this.board = board; 
+        	this.addMouseListener(new MouseHandler());
+        	board.addObserver(this);
+		}
+		private class MouseHandler extends MouseMotionAdapter implements MouseListener{
+			private Point source = new Point();
+			public void mouseDragged(MouseEvent e) {
+				java.awt.Component c = e.getComponent();
+				if (!(e.getSource() instanceof CMBoardView)) {
+					int offsetX = (int) (e.getX() - source.getX());
+					int offsetY = (int) (e.getY() - source.getY());
+					c.setLocation(c.getX()+e.getX() - c.getWidth() / 2, c.getY()+e.getY());
+					
+				}
+				repaint();
+			//	invalidate();
+				//validate();
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			public void mouseExited(MouseEvent e) {
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				source = e.getPoint();
+				System.out.println(e.getPoint());
+				//((JComponent)e.getSource()).setBackground(Color.blue);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				source = e.getPoint();
+			}
+		}
+		public void update(Observable o, Object arg)  {
+			System.out.println("here");
+			if (arg instanceof Component) {
+				System.out.println("adding component");
+				Component c = (Component) arg;
+				CMComponent cm = (CMComponent) c;
+				cm.getComponentView().addMouseMotionListener(new MouseHandler());
+				cm.getComponentView().addMouseListener(new MouseHandler());
+				Point p = c.getPosition();
+				//cm.getComponentView().setLocation(0,0);
+				add(cm.getComponentView());
+				cm.getComponentView().setBounds(0,0,0,0);
+	
+			//	invalidate();
+				//validate();
+			}
+			
+		}
 	}
 }
