@@ -57,7 +57,7 @@ public class CircuitMaker extends JFrame implements ActionListener {
 		TitledBorder componentPanelTitle;
 		componentPanelTitle = BorderFactory.createTitledBorder("Component Select");
 		componentPanel.setBorder(componentPanelTitle);
-		toolbar.add(componentPanel, BorderLayout.NORTH);
+		toolbar.add(componentPanel);
 
 		ImageIcon icon = new ImageIcon("images/DIP-8-300-scaled.gif");
 		JButton dipButton = new JButton(icon);
@@ -66,6 +66,19 @@ public class CircuitMaker extends JFrame implements ActionListener {
 		dipButton.setToolTipText("DIP-8 300 Mil");
 		componentPanel.add(dipButton);
 
+		ImageIcon icon2 = new ImageIcon("images/DIP-14-300-scaled.gif");
+		JButton dip14300Button = new JButton(icon2);
+		dip14300Button.setActionCommand("dip-14-300");
+		dip14300Button.addActionListener(this);
+		dip14300Button.setToolTipText("DIP-14 300 Mil");
+		componentPanel.add(dip14300Button);
+
+		ImageIcon icon3 = new ImageIcon("images/DIP-16-300-scaled.gif");
+		JButton dip16300 = new JButton(icon3);
+		dip16300.setActionCommand("dip-16-300");
+		dip16300.addActionListener(this);
+		dip16300.setToolTipText("DIP-16 300 Mil");
+		componentPanel.add(dip16300);
 
 		JButton autoroute = new JButton("AutoRoute");
 		autoroute.setAlignmentX(CENTER_ALIGNMENT);
@@ -183,8 +196,22 @@ public class CircuitMaker extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("dip-8-300")) {
 			CMComponent dip8Component = new CMComponent("dip-8-300");
-			CMConnectionPoint connPoint = new CMConnectionPoint(5, 5, 20, 15);
+			CMConnectionPoint connPoint = new CMConnectionPoint (5, 5, 20, 15);
+			CMConnectionPoint connPoint1 = new CMConnectionPoint (5, 30, 20, 15);
+			CMConnectionPoint connPoint2 = new CMConnectionPoint (5, 55, 20, 15);
+			CMConnectionPoint connPoint3 = new CMConnectionPoint (5, 80, 20, 15);
+			CMConnectionPoint connPoint4 = new CMConnectionPoint (80, 5, 20, 15);
+			CMConnectionPoint connPoint5 = new CMConnectionPoint (80, 30, 20, 15);
+			CMConnectionPoint connPoint6 = new CMConnectionPoint (80, 55, 20, 15);
+			CMConnectionPoint connPoint7 = new CMConnectionPoint (80, 80, 20, 15);
 			dip8Component.addConnectionPoint(connPoint);
+			dip8Component.addConnectionPoint(connPoint1);
+			dip8Component.addConnectionPoint(connPoint2);
+			dip8Component.addConnectionPoint(connPoint3);
+			dip8Component.addConnectionPoint(connPoint4);
+			dip8Component.addConnectionPoint(connPoint5);
+			dip8Component.addConnectionPoint(connPoint6);
+			dip8Component.addConnectionPoint(connPoint7);
 			myBoard.addComponent(
 				dip8Component
 			);
@@ -194,6 +221,86 @@ public class CircuitMaker extends JFrame implements ActionListener {
 		}
 		if (e.getActionCommand().equals("autoroute")) {
 			System.out.println(myBoard.listConnections());
+		}
+		if (e.getActionCommand().equals("dip-14-300")) {
+			CMComponent dip8Component = new CMComponent("dip-14-300");
+			CMConnectionPoint connPoint = new CMConnectionPoint (5, 5, 20, 15);
+			CMConnectionPoint connPoint1 = new CMConnectionPoint (5, 30, 20, 15);
+			CMConnectionPoint connPoint2 = new CMConnectionPoint (5, 55, 20, 15);
+			CMConnectionPoint connPoint3 = new CMConnectionPoint (5, 80, 20, 15);
+			CMConnectionPoint connPoint8 = new CMConnectionPoint (5, 105, 20, 15);
+			CMConnectionPoint connPoint9 = new CMConnectionPoint (5, 130, 20, 15);
+			CMConnectionPoint connPoint10 = new CMConnectionPoint (5, 155, 20, 15);
+			CMConnectionPoint connPoint4 = new CMConnectionPoint (80, 5, 20, 15);
+			CMConnectionPoint connPoint5 = new CMConnectionPoint (80, 30, 20, 15);
+			CMConnectionPoint connPoint6 = new CMConnectionPoint (80, 55, 20, 15);
+			CMConnectionPoint connPoint7 = new CMConnectionPoint (80, 80, 20, 15);
+			CMConnectionPoint connPoint11 = new CMConnectionPoint (80, 105, 20, 15);
+			CMConnectionPoint connPoint12 = new CMConnectionPoint (80, 130, 20, 15);
+			CMConnectionPoint connPoint13 = new CMConnectionPoint (80, 155, 20, 15);
+			dip8Component.addConnectionPoint(connPoint);
+			dip8Component.addConnectionPoint(connPoint1);
+			dip8Component.addConnectionPoint(connPoint2);
+			dip8Component.addConnectionPoint(connPoint3);
+			dip8Component.addConnectionPoint(connPoint4);
+			dip8Component.addConnectionPoint(connPoint5);
+			dip8Component.addConnectionPoint(connPoint6);
+			dip8Component.addConnectionPoint(connPoint7);
+			dip8Component.addConnectionPoint(connPoint8);
+			dip8Component.addConnectionPoint(connPoint9);
+			dip8Component.addConnectionPoint(connPoint10);
+			dip8Component.addConnectionPoint(connPoint11);
+			dip8Component.addConnectionPoint(connPoint12);
+			dip8Component.addConnectionPoint(connPoint13);
+
+			myBoard.addComponent(
+				dip8Component
+			);
+			//invalidate();
+			//validate();
+			repaint();
+		}
+		if (e.getActionCommand().equals("dip-16-300")) {
+			CMComponent dip8Component = new CMComponent("dip-16-300");
+			CMConnectionPoint connPoint = new CMConnectionPoint (5, 5, 20, 15);
+			CMConnectionPoint connPoint1 = new CMConnectionPoint (5, 30, 20, 15);
+			CMConnectionPoint connPoint2 = new CMConnectionPoint (5, 55, 20, 15);
+			CMConnectionPoint connPoint3 = new CMConnectionPoint (5, 80, 20, 15);
+			CMConnectionPoint connPoint8 = new CMConnectionPoint (5, 105, 20, 15);
+			CMConnectionPoint connPoint9 = new CMConnectionPoint (5, 130, 20, 15);
+			CMConnectionPoint connPoint10 = new CMConnectionPoint (5, 155, 20, 15);
+			CMConnectionPoint connPoint14 = new CMConnectionPoint (5, 180, 20, 15);
+			CMConnectionPoint connPoint4 = new CMConnectionPoint (80, 5, 20, 15);
+			CMConnectionPoint connPoint5 = new CMConnectionPoint (80, 30, 20, 15);
+			CMConnectionPoint connPoint6 = new CMConnectionPoint (80, 55, 20, 15);
+			CMConnectionPoint connPoint7 = new CMConnectionPoint (80, 80, 20, 15);
+			CMConnectionPoint connPoint11 = new CMConnectionPoint (80, 105, 20, 15);
+			CMConnectionPoint connPoint12 = new CMConnectionPoint (80, 130, 20, 15);
+			CMConnectionPoint connPoint13 = new CMConnectionPoint (80, 155, 20, 15);
+			CMConnectionPoint connPoint15 = new CMConnectionPoint (80, 180, 20, 15);
+			dip8Component.addConnectionPoint(connPoint);
+			dip8Component.addConnectionPoint(connPoint1);
+			dip8Component.addConnectionPoint(connPoint2);
+			dip8Component.addConnectionPoint(connPoint3);
+			dip8Component.addConnectionPoint(connPoint4);
+			dip8Component.addConnectionPoint(connPoint5);
+			dip8Component.addConnectionPoint(connPoint6);
+			dip8Component.addConnectionPoint(connPoint7);
+			dip8Component.addConnectionPoint(connPoint8);
+			dip8Component.addConnectionPoint(connPoint9);
+			dip8Component.addConnectionPoint(connPoint10);
+			dip8Component.addConnectionPoint(connPoint11);
+			dip8Component.addConnectionPoint(connPoint12);
+			dip8Component.addConnectionPoint(connPoint13);
+			dip8Component.addConnectionPoint(connPoint14);
+			dip8Component.addConnectionPoint(connPoint15);
+
+			myBoard.addComponent(
+				dip8Component
+			);
+			//invalidate();
+			//validate();
+			repaint();
 		}
 		
 	}

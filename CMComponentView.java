@@ -19,7 +19,7 @@ public class CMComponentView extends JPanel {
 			setBackground(Color.black);
 			this.myComponent = myComponent;
 			try {
-				image = ImageIO.read(new FileInputStream("images/DIP-8-300.gif"));
+				image = ImageIO.read(new FileInputStream("images/" + myComponent.getName() +".gif"));
 			} catch (Exception e) {
 				System.out.println("image not found");
 			}
@@ -38,9 +38,9 @@ public class CMComponentView extends JPanel {
 		protected void paintChildren(Graphics g) {
 			super.paintChildren(g);
 			Graphics2D g2d = (Graphics2D) g.create();
-			Shape s = new Rectangle2D.Double(5.0, 5.0, 20.0, 15.0);
+			//Shape s = new Rectangle2D.Double(80.0, 5.0, 20.0, 15.0);
 			g2d.setColor(Color.blue);
-			g2d.draw(s);
+			//g2d.draw(s);
 			g2d.dispose();
 		}
 		public Dimension getPreferredSize() {

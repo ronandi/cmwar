@@ -71,6 +71,7 @@ public class CMBoardView extends JPanel implements Observer {
 		private class MouseHandler extends MouseMotionAdapter implements MouseListener{
 			private Point source = new Point();
 			public void mouseDragged(MouseEvent e) {
+				if (!connecting) {
 				java.awt.Component c = e.getComponent();
 				//System.out.println(e.getSource() instanceof CMComponent);
 				if (!(e.getSource() instanceof CMBoardView)) {
@@ -86,6 +87,7 @@ public class CMBoardView extends JPanel implements Observer {
 				repaint();
 			//	invalidate();
 				//validate();
+			}
 			}
 
 			public void mouseClicked(MouseEvent e) {
@@ -106,6 +108,7 @@ public class CMBoardView extends JPanel implements Observer {
 				source = e.getPoint();
 				System.out.println(e.getPoint());
 				//((JComponent)e.getSource()).setBackground(Color.blue);
+
 				if (e.getSource() instanceof CMComponentView) {
 					CMComponent clickedComp = ((CMComponentView) e.getSource()).getComponent();
 					List<ConnectionPoint> connPts = clickedComp.getConnectionPoints();
@@ -186,9 +189,10 @@ public class CMBoardView extends JPanel implements Observer {
 				cm.getComponentView().addMouseMotionListener(new MouseHandler());
 				cm.getComponentView().addMouseListener(new MouseHandler());
 				Point p = c.getPosition();
-				//cm.getComponentView().setLocation(0,0);
+				cm.getComponentView().setLocation(0,0);
 				add(cm.getComponentView());
-				cm.getComponentView().setBounds(0,0,109,101);
+				//cm.getComponentView().setBounds(0,0,109,101);
+				cm.getComponentView().setSize(cm.getComponentView().getPreferredSize());
 	
 			//	invalidate();
 			//	validate();
