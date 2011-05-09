@@ -14,7 +14,7 @@ public interface Component {
 	* @param a Component connection point to connect to.
 	* @param b Component connection point to connect to.
 	*/
-	public void connectTo(ConnectionPoint a, ConnectionPoint b);
+	public void connectTo(ConnectionPoint a, ConnectionPoint b, Component compB);
 
 	/**
 	* Rotates this component

@@ -32,4 +32,5 @@ public interface ConnectionPoint {
 	*Sets location of bounding box
 	*/
 	public void setLocation(int x, int y);
+	public boolean checkPoint(Point p);
 }

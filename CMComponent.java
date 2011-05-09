@@ -64,10 +64,15 @@ public class CMComponent implements Component {
 	* @param b Component connection point to connect to.
 	* @test.status ok
 	*/
-	public void connectTo(ConnectionPoint a, ConnectionPoint b) {
+	public void connectTo(ConnectionPoint a, ConnectionPoint b, Component compB) {
 		Connection conn = new CMConnection();
-		conn.setEnds(a, b);
+		conn.setEnds(this, a, compB, b);
 		myConns.add(conn);
+	}
+
+	public void removeConnection(Connection c) {
+		int x = myConns.indexOf(c);
+		myConns.remove(c);
 	}
 
 	/**
@@ -105,6 +110,10 @@ public class CMComponent implements Component {
 	*/
 	public void setName(String n) {
 		name = n;
+	}
+
+	public void clearConnections() {
+		myConns.clear();
 	}
 
 	/**
@@ -163,7 +172,7 @@ public class CMComponent implements Component {
 		CMComponent myComp2 = new CMComponent();
 		ConnectionPoint cp2 = new CMConnectionPoint(3, 3, 5, 5);
 		myComp2.addConnectionPoint(cp2);
-		myComp.connectTo(cp1, cp2);
+		//myComp.connectTo(cp1, cp2);
 		System.out.println(myComp.getConnectionPoints());
 		System.out.println(myComp.getConnections());
 		System.out.println(myComp.getOrientation());
@@ -172,32 +181,4 @@ public class CMComponent implements Component {
 	public JPanel getComponentView() {
 		return view;
 	}
-
-	private class CMComponentView extends JPanel {
-		private CMComponent myComponent;
-		private BufferedImage image;
-		public CMComponentView(CMComponent myComponent) {
-			setLayout(null);
-			//setOpaque(false);
-			setBackground(Color.black);
-			this.myComponent = myComponent;
-			try {
-				image = ImageIO.read(new FileInputStream("images/DIP-8-300.gif"));
-			} catch (Exception e) {
-				System.out.println("image not found");
-			}
-		}
-		protected void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2d = (Graphics2D) g.create();
-			//g2d.drawRenderedImage(image, new AffineTransform());
-			g2d.dispose();
-		}
-		public Dimension getPreferredSize() {
-			System.out.println(image.getWidth());
-			System.out.println(image.getHeight());
-			return new Dimension(image.getWidth(), image.getHeight());
-		}
-	}
-	
 }

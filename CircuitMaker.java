@@ -38,7 +38,7 @@ public class CircuitMaker extends JFrame implements ActionListener {
 		super("Circuit Maker with AutoRouter");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setBounds(0, 0, screenSize.width, screenSize.height);
+		setSize(screenSize.width, screenSize.height);
 		desktop = new JDesktopPane();
 		setContentPane(desktop);
 		getContentPane().setBackground(Color.gray); //for that ubiquitous "classic" look 
@@ -49,6 +49,7 @@ public class CircuitMaker extends JFrame implements ActionListener {
 		setJMenuBar(createMenuBar());
 		setResizable(true);
 		setVisible(true);
+		//setLayout(null);
 	}
 	private void createToolbar() {
 		ToolInternalFrame toolbar = new ToolInternalFrame();
@@ -182,12 +183,17 @@ public class CircuitMaker extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("dip-8-300")) {
 			CMComponent dip8Component = new CMComponent("dip-8-300");
+			CMConnectionPoint connPoint = new CMConnectionPoint(5, 5, 20, 15);
+			dip8Component.addConnectionPoint(connPoint);
 			myBoard.addComponent(
 				dip8Component
 			);
-			invalidate();
-			validate();
+			//invalidate();
+			//validate();
 			repaint();
+		}
+		if (e.getActionCommand().equals("autoroute")) {
+			System.out.println(myBoard.listConnections());
 		}
 		
 	}
@@ -202,10 +208,12 @@ public class CircuitMaker extends JFrame implements ActionListener {
 			);
 			setSize(150, 600);
 			setLocation(50, 125);
+			
 		}
 	}
 
 	private class WorkInternalFrame extends JInternalFrame {
+		private MyPopupMenu popupmenu;
 		public WorkInternalFrame() {
 			super("Work Area",
 				false,
@@ -216,6 +224,42 @@ public class CircuitMaker extends JFrame implements ActionListener {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			setSize(screenSize.width - 500, screenSize.height - 200);
 			setLocation(250, 50);
+		//	setLayout(null);
+			popupmenu = new MyPopupMenu();
+			//addMouseListener(this);
+		}
+		public void mouseClicked(MouseEvent arg0) {
+		
+	}
+
+	public void mouseEntered(MouseEvent arg0) {
+		
+	}
+
+	public void mouseExited(MouseEvent arg0) {
+		
+	}
+
+	public void mousePressed(MouseEvent arg0) {
+		
+	}
+
+	public void mouseReleased(MouseEvent e) {
+		if(e.isPopupTrigger()){
+			popupmenu.show(e.getComponent(),
+                       e.getX(), e.getY());
+		}
+		
+	}
+	}
+
+	private class MyPopupMenu extends JPopupMenu {
+		private JMenuItem menu1;
+
+		public MyPopupMenu() {
+			menu1 = new JMenuItem("Menu Item 1");
+			add(menu1);
+			setLightWeightPopupEnabled(true);
 		}
 	}
 

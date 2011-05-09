@@ -13,8 +13,10 @@ public class CMConnection implements Connection {
 	*Array of size 2 holding connection points
 	*/
 	private ConnectionPoint[] ends;
+	private Component[] compEnds;
 	public CMConnection() {
 		ends = new ConnectionPoint[2];
+		compEnds = new Component[2];
 	}
 
 	/**
@@ -26,6 +28,10 @@ public class CMConnection implements Connection {
 		return ends;
 	}
 
+	public Component[] getComponentEnds() {
+		return compEnds;
+	}
+
 	/**
 	* Method to set the ends of a connection.
 	* @param a A Component to be connected.
@@ -33,6 +39,12 @@ public class CMConnection implements Connection {
 	* @test.status ok
 	*/
 	public void setEnds(ConnectionPoint a, ConnectionPoint b) {
+		ends[0] = a;
+		ends[1] = b;
+	}
+	public void setEnds(Component compA, ConnectionPoint a, Component compB, ConnectionPoint b) {
+		compEnds[0] = compA;
+		compEnds[1] = compB;
 		ends[0] = a;
 		ends[1] = b;
 	}

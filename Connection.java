@@ -17,5 +17,8 @@ public interface Connection {
 	* @param a A Component to be connected.
 	* @param b Opposite Component to be connected to A, and vice versa.
 	*/
+
+	public Component[] getComponentEnds();
+	public void setEnds(Component compA, ConnectionPoint a, Component compB, ConnectionPoint b);
 	public void setEnds(ConnectionPoint a, ConnectionPoint b);
 }

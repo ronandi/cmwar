@@ -29,6 +29,10 @@ public class CMConnectionPoint implements ConnectionPoint {
 		myBounds.setSize(width, height);
 	}
 
+	public boolean checkPoint(Point p) {
+		return myBounds.contains(p);
+	}
+
 	/**
 	*Returns the bounds (size) of connection point
 	*@test.status ok
